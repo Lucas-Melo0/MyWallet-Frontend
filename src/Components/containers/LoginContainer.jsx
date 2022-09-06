@@ -18,6 +18,7 @@ const RedirectLink = styled.p`
   font-size: 18px;
   color: #ffffff;
   font-family: "Raleway", sans-serif;
+  font-weight: 700;
 
   &:hover {
     cursor: pointer;
