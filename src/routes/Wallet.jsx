@@ -6,7 +6,8 @@ import {
   WalletOperations,
 } from "../Components/containers/WalletContainer";
 import { IoExitOutline } from "react-icons/io5";
-import { BsPlusCircle } from "react-icons/bs";
+import { BiPlusCircle } from "react-icons/bi";
+import { BiMinusCircle } from "react-icons/bi";
 const Wallet = () => {
   return (
     <>
@@ -20,10 +21,13 @@ const Wallet = () => {
         </WalletOperations>
         <SquareContainer>
           <EntrySquare>
-            <BsPlusCircle color="#FFFFFF" size={"25px"} />
+            <BiPlusCircle color="#FFFFFF" size={"28px"} />
             <p> Nova Entrada</p>
           </EntrySquare>
-          <EntrySquare></EntrySquare>
+          <EntrySquare>
+            <BiMinusCircle color="#FFFFFF" size={"28px"} />
+            <p>Nova saída </p>
+          </EntrySquare>
         </SquareContainer>
       </WalletContainer>
     </>

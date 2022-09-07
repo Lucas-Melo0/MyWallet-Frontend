@@ -43,7 +43,7 @@ const SquareContainer = styled.div`
 `;
 const EntrySquare = styled.div`
   display: flex;
-  row-gap: 70px;
+  justify-content: space-between;
   flex-direction: column;
   align-items: flex-start;
   padding: 10px;
