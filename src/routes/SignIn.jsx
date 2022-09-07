@@ -7,6 +7,7 @@ import { PurpleButton } from "../Components/buttons/PurpleButton";
 import { FormInput } from "../Components/form/FormInput";
 import { CustomForm } from "../Components/form/CustomForm";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const [userData, setUserData] = useState({
@@ -31,14 +32,16 @@ const SignIn = () => {
             onChange={handleForm}
           ></FormInput>
           <FormInput
+            type="password"
             placeholder="Senha"
             name="password"
             onChange={handleForm}
           ></FormInput>
           <PurpleButton>Entrar</PurpleButton>
         </CustomForm>
-
-        <RedirectLink>Primeira vez? Cadastre-se!</RedirectLink>
+        <Link to={"/cadastro"}>
+          <RedirectLink>Primeira vez? Cadastre-se!</RedirectLink>
+        </Link>
       </LoginContainer>
     </>
   );

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { userSignUp } from "../API/axiosRequests";
 import { PurpleButton } from "../Components/buttons/PurpleButton";
 import {
@@ -54,7 +55,9 @@ const SignUp = () => {
           ></FormInput>
           <PurpleButton>Cadastrar</PurpleButton>
         </CustomForm>
-        <RedirectLink>Já tem uma conta? Entre agora!</RedirectLink>
+        <Link to={"/"}>
+          <RedirectLink>Já tem uma conta? Entre agora!</RedirectLink>
+        </Link>
       </LoginContainer>
     </>
   );

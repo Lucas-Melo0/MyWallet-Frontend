@@ -29,7 +29,7 @@ const WalletOperations = styled.div`
   width: 100%;
   height: 66vh;
   h6 {
-    font-family: "Raleway";
+    font-family: "Raleway", sans-serif;
     font-size: 20px;
     text-align: center;
     margin: auto 0;
@@ -53,7 +53,7 @@ const EntrySquare = styled.div`
   border-radius: 5px;
   p {
     width: 80px;
-    font-family: "Raleway";
+    font-family: "Raleway", sans-serif;
     font-weight: 700;
     font-size: 17px;
     color: #ffffff;
