@@ -5,9 +5,10 @@ import {
 } from "../Components/containers/LoginContainer";
 import { PurpleButton } from "../Components/buttons/PurpleButton";
 import { FormInput } from "../Components/form/FormInput";
+import { useNavigate, Link } from "react-router-dom";
 import { CustomForm } from "../Components/form/CustomForm";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { userSignIn } from "../API/axiosRequests";
 
 const SignIn = () => {
   const [userData, setUserData] = useState({
@@ -15,11 +16,20 @@ const SignIn = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleForm = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await userSignIn(userData);
+      console.log(response);
+      navigate("/sessao");
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
