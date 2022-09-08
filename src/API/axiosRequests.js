@@ -1,7 +1,11 @@
 import { axiosBase } from "./axiosBase";
 
 const userSignUp = (data) => {
-  return axiosBase.post("/signup", data);
+  return axiosBase.post("/sign-up", data);
 };
 
-export { userSignUp };
+const userSignIn = (data) => {
+  return axiosBase.post("/sign-in", data);
+};
+
+export { userSignUp, userSignIn };

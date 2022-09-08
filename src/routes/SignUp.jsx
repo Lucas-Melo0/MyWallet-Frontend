@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { userSignUp } from "../API/axiosRequests";
+import { useNavigate } from "react-router-dom";
 import { PurpleButton } from "../Components/buttons/PurpleButton";
 import {
   LoginContainer,
@@ -17,13 +18,18 @@ const SignUp = () => {
     password: "",
     confirmation: "",
   });
-
+  const navigate = useNavigate();
   const handleForm = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    userSignUp(userData);
+    try {
+      await userSignUp(userData);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

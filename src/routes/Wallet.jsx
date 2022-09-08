@@ -8,6 +8,7 @@ import {
 import { IoExitOutline } from "react-icons/io5";
 import { BiPlusCircle } from "react-icons/bi";
 import { BiMinusCircle } from "react-icons/bi";
+import { Link } from "react-router-dom";
 const Wallet = () => {
   return (
     <>
@@ -21,11 +22,15 @@ const Wallet = () => {
         </WalletOperations>
         <SquareContainer>
           <EntrySquare>
-            <BiPlusCircle color="#FFFFFF" size={"28px"} />
+            <Link to="/sessao/entrada">
+              <BiPlusCircle color="#FFFFFF" size={"28px"} />
+            </Link>
             <p> Nova Entrada</p>
           </EntrySquare>
           <EntrySquare>
-            <BiMinusCircle color="#FFFFFF" size={"28px"} />
+            <Link to="/sessao/saida">
+              <BiMinusCircle color="#FFFFFF" size={"28px"} />
+            </Link>
             <p>Nova saída </p>
           </EntrySquare>
         </SquareContainer>
