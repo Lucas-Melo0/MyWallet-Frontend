@@ -14,12 +14,12 @@ import { useEffect, useState } from "react";
 import { IoExitOutline } from "react-icons/io5";
 import { BiPlusCircle } from "react-icons/bi";
 import { BiMinusCircle } from "react-icons/bi";
-import { Link } from "react-router-dom";
-import { getOperations } from "../API/axiosRequests";
+import { Link, useNavigate } from "react-router-dom";
+import { deleteSession, getOperations } from "../API/axiosRequests";
 const Wallet = ({ data }) => {
   const [operations, setOperations] = useState([]);
   const { token, name } = data;
-
+  const navigate = useNavigate();
   useEffect(() => {
     getOperations(token).then((value) => setOperations(value.data));
   }, []);
@@ -33,13 +33,21 @@ const Wallet = ({ data }) => {
 
     return sum;
   };
+  const logoutUser = async () => {
+    try {
+      await deleteSession(token);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
       <WalletContainer>
         <PageHeader>
           <p> Olá, {name}</p>
-          <IoExitOutline color="#FFFFFF" size={"25px"} />
+          <IoExitOutline onClick={logoutUser} color="#FFFFFF" size={"25px"} />
         </PageHeader>
         <WalletOperations>
           {/*  <h6>Não há registros de entrada ou saída</h6> */}

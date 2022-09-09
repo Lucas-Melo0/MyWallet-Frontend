@@ -20,6 +20,9 @@ const PageHeader = styled.div`
     font-size: 26px;
     color: #ffffff;
   }
+  svg {
+    cursor: pointer;
+  }
 `;
 const WalletOperations = styled.div`
   display: flex;

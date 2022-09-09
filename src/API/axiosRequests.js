@@ -25,5 +25,17 @@ const sendExpense = (data, token) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+const deleteSession = (token) => {
+  return axiosBase.delete("/sign-in", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
 
-export { userSignUp, userSignIn, getOperations, sendIncome, sendExpense };
+export {
+  userSignUp,
+  userSignIn,
+  getOperations,
+  sendIncome,
+  sendExpense,
+  deleteSession,
+};
