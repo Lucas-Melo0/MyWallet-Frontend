@@ -22,7 +22,6 @@ const Income = ({ data }) => {
 
   const handleForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log(form);
   };
 
   return (

@@ -26,9 +26,9 @@ const Wallet = ({ data }) => {
 
   const calculateResult = () => {
     let sum = 0;
-    operations.forEach((operation) => {
-      if (operation.operation === "income") sum += Number(operation.value);
-      if (operation.operation === "outcome") sum -= Number(operation.value);
+    operations.forEach((transaction) => {
+      if (transaction.operation === "income") sum += Number(transaction.value);
+      if (transaction.operation === "outcome") sum -= Number(transaction.value);
     });
 
     return sum;

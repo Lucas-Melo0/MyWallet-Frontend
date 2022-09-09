@@ -20,4 +20,10 @@ const sendIncome = (data, token) => {
   });
 };
 
-export { userSignUp, userSignIn, getOperations, sendIncome };
+const sendExpense = (data, token) => {
+  return axiosBase.post("/outcome", data, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+export { userSignUp, userSignIn, getOperations, sendIncome, sendExpense };
