@@ -24,6 +24,7 @@ const PageHeader = styled.div`
 const WalletOperations = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: #ffffff;
   border-radius: 5px;
   width: 100%;
@@ -41,6 +42,24 @@ const OperationsContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
+`;
+const TopContainer = styled.div``;
+const BottomContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  h6 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: #000000;
+  }
+  p {
+    font-family: "Raleway", sans-serif;
+    font-size: 17px;
+    color: #03ac00;
+  }
 `;
 const LeftContainer = styled.div`
   display: flex;
@@ -61,7 +80,7 @@ const RightContainer = styled.div`
   font-family: "Raleway", sans-serif;
   font-size: 16px;
   line-height: 19px;
-  color: #c70000;
+  color: ${({ type }) => (type === "income" ? "#17c700" : "#c70000")};
 `;
 const SquareContainer = styled.div`
   display: flex;
@@ -96,4 +115,6 @@ export {
   OperationsContainer,
   LeftContainer,
   RightContainer,
+  TopContainer,
+  BottomContainer,
 };
