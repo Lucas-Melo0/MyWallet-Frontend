@@ -10,14 +10,14 @@ import { CustomForm } from "../Components/form/CustomForm";
 import { useState } from "react";
 import { userSignIn } from "../API/axiosRequests";
 
-const SignIn = () => {
+const SignIn = ({ setData, data }) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
 
   const navigate = useNavigate();
-
+  console.log(data);
   const handleForm = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
@@ -25,8 +25,8 @@ const SignIn = () => {
     e.preventDefault();
     try {
       const response = await userSignIn(userData);
-      console.log(response);
-      navigate("/sessao");
+      setData(response.data);
+      navigate("/sessao", { state: { data: response.data } });
     } catch (err) {
       console.log(err);
     }

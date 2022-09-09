@@ -36,6 +36,33 @@ const WalletOperations = styled.div`
     color: #868686;
   }
 `;
+const OperationsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+`;
+const LeftContainer = styled.div`
+  display: flex;
+
+  h5 {
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    color: #c6c6c6;
+  }
+  p {
+    margin-left: 10px;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    color: #000000;
+  }
+`;
+const RightContainer = styled.div`
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  color: #c70000;
+`;
 const SquareContainer = styled.div`
   display: flex;
   width: 100%;
@@ -66,4 +93,7 @@ export {
   WalletOperations,
   EntrySquare,
   SquareContainer,
+  OperationsContainer,
+  LeftContainer,
+  RightContainer,
 };

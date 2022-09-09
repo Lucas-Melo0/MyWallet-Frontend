@@ -8,4 +8,16 @@ const userSignIn = (data) => {
   return axiosBase.post("/sign-in", data);
 };
 
-export { userSignUp, userSignIn };
+const getOperations = (token) => {
+  return axiosBase.get("/session", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+const sendIncome = (data, token) => {
+  return axiosBase.post("/income", data, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+export { userSignUp, userSignIn, getOperations, sendIncome };
