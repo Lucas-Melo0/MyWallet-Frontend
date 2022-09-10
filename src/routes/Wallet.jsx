@@ -79,6 +79,7 @@ const Wallet = ({ data }) => {
                     <p> {operation.description}</p>
                   </LeftContainer>
                   <RightContainer type={operation.operation}>
+                    <h3>R$</h3>
                     <p> {operation.value}</p>
                     <h5 onClick={() => deleteTransaction(operation._id)}>x</h5>
                   </RightContainer>

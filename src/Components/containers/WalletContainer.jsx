@@ -84,7 +84,14 @@ const RightContainer = styled.div`
   font-family: "Raleway", sans-serif;
   font-size: 16px;
   line-height: 19px;
-  color: ${({ type }) => (type === "income" ? "#17c700" : "#c70000")};
+  p {
+    color: ${({ type }) => (type === "income" ? "#17c700" : "#c70000")};
+  }
+  h3 {
+    margin-right: 3px;
+    font-size: 16px;
+    font-family: "Raleway", sans-serif;
+  }
   h5 {
     cursor: pointer;
     margin-left: 5px;

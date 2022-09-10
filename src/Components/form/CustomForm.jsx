@@ -5,6 +5,19 @@ const CustomForm = styled.form`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+
+  #input-currency {
+    all: unset;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    background-color: #ffffff;
+    height: 58px;
+    border-radius: 5px;
+    color: #000000;
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+  }
 `;
 
 export { CustomForm };

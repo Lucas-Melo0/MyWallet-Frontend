@@ -5,7 +5,7 @@ import { FormInput } from "../Components/form/FormInput";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { sendIncome } from "../API/axiosRequests";
-
+import { CurrencyInput } from "../Components/masks/CurrencyInput";
 const Income = ({ data }) => {
   const navigate = useNavigate();
   const { token } = data;
@@ -29,13 +29,15 @@ const Income = ({ data }) => {
       <ExpenseContainer>
         <h1>Nova Entrada</h1>
         <CustomForm onSubmit={handleSubmit}>
-          <FormInput
-            type="number"
+          <CurrencyInput
+            id="input-currency"
+            value={form.value}
             placeholder="Valor"
             onChange={handleForm}
             required
             name="value"
-          ></FormInput>
+          ></CurrencyInput>
+
           <FormInput
             onChange={handleForm}
             placeholder="Descrição"
