@@ -80,10 +80,18 @@ const LeftContainer = styled.div`
   }
 `;
 const RightContainer = styled.div`
+  display: flex;
   font-family: "Raleway", sans-serif;
   font-size: 16px;
   line-height: 19px;
   color: ${({ type }) => (type === "income" ? "#17c700" : "#c70000")};
+  h5 {
+    cursor: pointer;
+    margin-left: 5px;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    color: #c6c6c6;
+  }
 `;
 const SquareContainer = styled.div`
   display: flex;

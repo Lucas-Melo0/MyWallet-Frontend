@@ -15,14 +15,21 @@ import { IoExitOutline } from "react-icons/io5";
 import { BiPlusCircle } from "react-icons/bi";
 import { BiMinusCircle } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
-import { deleteSession, getOperations } from "../API/axiosRequests";
+import {
+  deleteSession,
+  getOperations,
+  deleteOperation,
+} from "../API/axiosRequests";
+
 const Wallet = ({ data }) => {
   const [operations, setOperations] = useState([]);
+  const [render, setRender] = useState(false);
   const { token, name } = data;
   const navigate = useNavigate();
+
   useEffect(() => {
     getOperations(token).then((value) => setOperations(value.data));
-  }, []);
+  }, [render]);
 
   const calculateResult = () => {
     let sum = 0;
@@ -30,15 +37,27 @@ const Wallet = ({ data }) => {
       if (transaction.operation === "income") sum += Number(transaction.value);
       if (transaction.operation === "outcome") sum -= Number(transaction.value);
     });
-
     return sum;
   };
+
   const logoutUser = async () => {
     try {
       await deleteSession(token);
       navigate("/");
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const deleteTransaction = async (id) => {
+    const wantsToDelete = window.confirm("Deseja realmente deletar esse item?");
+    if (wantsToDelete) {
+      try {
+        await deleteOperation(id, token);
+        setRender(!render);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -61,6 +80,7 @@ const Wallet = ({ data }) => {
                   </LeftContainer>
                   <RightContainer type={operation.operation}>
                     <p> {operation.value}</p>
+                    <h5 onClick={() => deleteTransaction(operation._id)}>x</h5>
                   </RightContainer>
                 </OperationsContainer>
               );

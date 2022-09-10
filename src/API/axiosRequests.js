@@ -31,6 +31,12 @@ const deleteSession = (token) => {
   });
 };
 
+const deleteOperation = (id, token) => {
+  return axiosBase.delete(`/transactions/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
 export {
   userSignUp,
   userSignIn,
@@ -38,4 +44,5 @@ export {
   sendIncome,
   sendExpense,
   deleteSession,
+  deleteOperation,
 };
