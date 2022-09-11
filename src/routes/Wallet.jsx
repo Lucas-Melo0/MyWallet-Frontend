@@ -44,7 +44,7 @@ const Wallet = ({ setPageType }) => {
         );
       }
 
-      if (transaction.operation === "outcome") {
+      if (transaction.operation === "expenses") {
         sum -= Number(
           transaction.value
             .replace("R$", "")
