@@ -34,8 +34,23 @@ const Wallet = ({ data }) => {
   const calculateResult = () => {
     let sum = 0;
     operations.forEach((transaction) => {
-      if (transaction.operation === "income") sum += Number(transaction.value);
-      if (transaction.operation === "outcome") sum -= Number(transaction.value);
+      if (transaction.operation === "income") {
+        sum += Number(
+          transaction.value
+            .replace("R$", "")
+            .replaceAll(".", "")
+            .replace(",", ".")
+        );
+      }
+
+      if (transaction.operation === "outcome") {
+        sum -= Number(
+          transaction.value
+            .replace("R$", "")
+            .replaceAll(".", "")
+            .replace(",", ".")
+        );
+      }
     });
     return sum;
   };
@@ -79,7 +94,6 @@ const Wallet = ({ data }) => {
                     <p> {operation.description}</p>
                   </LeftContainer>
                   <RightContainer type={operation.operation}>
-                    <h3>R$</h3>
                     <p> {operation.value}</p>
                     <h5 onClick={() => deleteTransaction(operation._id)}>x</h5>
                   </RightContainer>

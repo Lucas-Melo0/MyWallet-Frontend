@@ -5,6 +5,7 @@ import { FormInput } from "../Components/form/FormInput";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { sendExpense } from "../API/axiosRequests";
+import { CurrencyInput } from "../Components/masks/CurrencyInput";
 
 const Outcome = ({ data }) => {
   const navigate = useNavigate();
@@ -28,13 +29,14 @@ const Outcome = ({ data }) => {
       <ExpenseContainer>
         <h1>Nova saída</h1>
         <CustomForm onSubmit={handleSubmit}>
-          <FormInput
+          <CurrencyInput
+            id="input-currency"
+            value={form.value}
             placeholder="Valor"
-            required
             onChange={handleForm}
-            type={"number"}
+            required
             name="value"
-          ></FormInput>
+          ></CurrencyInput>
           <FormInput
             placeholder="Descrição"
             required

@@ -37,7 +37,6 @@ const Income = ({ data }) => {
             required
             name="value"
           ></CurrencyInput>
-
           <FormInput
             onChange={handleForm}
             placeholder="Descrição"
