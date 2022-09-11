@@ -97,7 +97,9 @@ const Wallet = ({ setPageType }) => {
           <IoExitOutline onClick={logoutUser} color="#FFFFFF" size={"25px"} />
         </PageHeader>
         <WalletOperations>
-          {/*  <h6>Não há registros de entrada ou saída</h6> */}
+          {operations.length === 0 && (
+            <h6>Não há registros de entrada ou saída</h6>
+          )}
           <TopContainer>
             {operations.map((operation, index) => {
               return (
