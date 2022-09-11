@@ -28,6 +28,9 @@ const SignUp = () => {
       await userSignUp(userData);
       navigate("/");
     } catch (err) {
+      const { status } = err.response;
+      if (status === 409) alert("Conta já existe!");
+      if (status === 400) alert("As senhas precisam ser iguais!");
       console.log(err);
     }
   };
@@ -38,22 +41,27 @@ const SignUp = () => {
         <Logo />
         <CustomForm onSubmit={handleSubmit}>
           <FormInput
+            required
             name="name"
             onChange={handleForm}
             placeholder="Nome"
           ></FormInput>
           <FormInput
+            required
+            type={"email"}
             name="email"
             onChange={handleForm}
             placeholder="Email"
           ></FormInput>
           <FormInput
+            required
             type="password"
             name="password"
             onChange={handleForm}
             placeholder="Senha"
           ></FormInput>
           <FormInput
+            required
             type="password"
             name="confirmation"
             onChange={handleForm}

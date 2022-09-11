@@ -17,7 +17,7 @@ const SignIn = ({ setData, data }) => {
   });
 
   const navigate = useNavigate();
-  console.log(data);
+
   const handleForm = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
@@ -26,8 +26,10 @@ const SignIn = ({ setData, data }) => {
     try {
       const response = await userSignIn(userData);
       setData(response.data);
-      navigate("/sessao", { state: { data: response.data } });
+      navigate("/sessao");
     } catch (err) {
+      const { status } = err.response;
+      if (status === 404) alert("Email ou senha incorretos!");
       console.log(err);
     }
   };
@@ -37,11 +39,14 @@ const SignIn = ({ setData, data }) => {
         <Logo />
         <CustomForm onSubmit={handleSubmit}>
           <FormInput
+            type={"email"}
+            required
             placeholder="Email"
             name="email"
             onChange={handleForm}
           ></FormInput>
           <FormInput
+            required
             type="password"
             placeholder="Senha"
             name="password"
