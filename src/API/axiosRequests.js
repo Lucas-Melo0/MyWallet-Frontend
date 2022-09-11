@@ -32,6 +32,12 @@ const deleteOperation = (id, token) => {
   });
 };
 
+const editOperation = (data, id, token) => {
+  return axiosBase.put(`/transactions/${id}`, data, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
 export {
   userSignUp,
   userSignIn,
@@ -39,4 +45,5 @@ export {
   sendTransaction,
   deleteSession,
   deleteOperation,
+  editOperation,
 };

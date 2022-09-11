@@ -77,6 +77,18 @@ const Wallet = ({ setPageType }) => {
     }
   };
 
+  const editTransaction = (operation) => {
+    const transaction = operation.operation;
+    if (transaction === "income") {
+      setPageType({ type: "editIncome", id: operation._id });
+      navigate("/transacoes");
+    }
+    if (transaction === "expenses") {
+      setPageType({ type: "editExpenses", id: operation._id });
+      navigate("/transacoes");
+    }
+  };
+
   return (
     <>
       <WalletContainer>
@@ -92,7 +104,9 @@ const Wallet = ({ setPageType }) => {
                 <OperationsContainer key={index}>
                   <LeftContainer>
                     <h5> {operation.date}</h5>
-                    <p> {operation.description}</p>
+                    <p onClick={() => editTransaction(operation)}>
+                      {operation.description}
+                    </p>
                   </LeftContainer>
                   <RightContainer type={operation.operation}>
                     <p> {operation.value}</p>
@@ -110,7 +124,7 @@ const Wallet = ({ setPageType }) => {
         <SquareContainer>
           <EntrySquare
             onClick={() => {
-              setPageType("income"), navigate("/transacoes");
+              setPageType({ type: "income" }), navigate("/transacoes");
             }}
           >
             <BiPlusCircle color="#FFFFFF" size={"28px"} />
@@ -118,7 +132,7 @@ const Wallet = ({ setPageType }) => {
           </EntrySquare>
           <EntrySquare
             onClick={() => {
-              setPageType("expenses"), navigate("/transacoes");
+              setPageType({ type: "expenses" }), navigate("/transacoes");
             }}
           >
             <BiMinusCircle color="#FFFFFF" size={"28px"} />

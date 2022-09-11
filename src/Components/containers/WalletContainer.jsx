@@ -73,6 +73,7 @@ const LeftContainer = styled.div`
     color: #c6c6c6;
   }
   p {
+    cursor: pointer;
     margin-left: 10px;
     font-family: "Raleway", sans-serif;
     font-size: 16px;
