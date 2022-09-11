@@ -107,16 +107,12 @@ const Wallet = ({ data }) => {
           </BottomContainer>
         </WalletOperations>
         <SquareContainer>
-          <EntrySquare>
-            <Link to="/sessao/entrada">
-              <BiPlusCircle color="#FFFFFF" size={"28px"} />
-            </Link>
+          <EntrySquare onClick={() => navigate("/sessao/entrada")}>
+            <BiPlusCircle color="#FFFFFF" size={"28px"} />
             <p> Nova Entrada</p>
           </EntrySquare>
-          <EntrySquare>
-            <Link to="/sessao/saida">
-              <BiMinusCircle color="#FFFFFF" size={"28px"} />
-            </Link>
+          <EntrySquare onClick={() => navigate("/sessao/saida")}>
+            <BiMinusCircle color="#FFFFFF" size={"28px"} />
             <p>Nova saída </p>
           </EntrySquare>
         </SquareContainer>
