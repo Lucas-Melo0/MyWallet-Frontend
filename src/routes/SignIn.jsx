@@ -10,7 +10,7 @@ import { CustomForm } from "../Components/form/CustomForm";
 import { useState } from "react";
 import { userSignIn } from "../API/axiosRequests";
 
-const SignIn = ({ setData, data }) => {
+const SignIn = ({}) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -25,11 +25,9 @@ const SignIn = ({ setData, data }) => {
     e.preventDefault();
     try {
       const response = await userSignIn(userData);
-      localStorage.setItem(
-        "auth",
-        JSON.stringify({ token: response.data.token, name: response.data.name })
-      );
-      setData(response.data);
+      const { token, name } = response.data;
+      localStorage.setItem("auth", JSON.stringify({ token, name }));
+
       navigate("/sessao");
     } catch (err) {
       const { status } = err.response;

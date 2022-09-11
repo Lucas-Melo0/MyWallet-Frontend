@@ -21,12 +21,11 @@ import {
   deleteOperation,
 } from "../API/axiosRequests";
 
-const Wallet = () => {
+const Wallet = ({ setPageType }) => {
   const [operations, setOperations] = useState([]);
   const [render, setRender] = useState(false);
   const data = JSON.parse(localStorage.getItem("auth"));
   const { token, name } = data;
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -105,16 +104,23 @@ const Wallet = () => {
           </TopContainer>
           <BottomContainer>
             <h6>SALDO</h6>
-            <p>{calculateResult()}</p>
+            <p>{`R$ ${calculateResult()}`}</p>
           </BottomContainer>
         </WalletOperations>
         <SquareContainer>
-          <EntrySquare onClick={() => navigate("/sessao/entrada")}>
+          <EntrySquare
+            onClick={() => {
+              setPageType("income"), navigate("/transacoes");
+            }}
+          >
             <BiPlusCircle color="#FFFFFF" size={"28px"} />
-
             <p> Nova Entrada</p>
           </EntrySquare>
-          <EntrySquare onClick={() => navigate("/sessao/saida")}>
+          <EntrySquare
+            onClick={() => {
+              setPageType("expenses"), navigate("/transacoes");
+            }}
+          >
             <BiMinusCircle color="#FFFFFF" size={"28px"} />
             <p>Nova saída </p>
           </EntrySquare>

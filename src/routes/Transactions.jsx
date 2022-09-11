@@ -2,20 +2,25 @@ import { PurpleButton } from "../Components/buttons/PurpleButton";
 import { ExpenseContainer } from "../Components/containers/ExpenseContainer";
 import { CustomForm } from "../Components/form/CustomForm";
 import { FormInput } from "../Components/form/FormInput";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { sendExpense } from "../API/axiosRequests";
+import { useNavigate } from "react-router-dom";
+import { sendTransaction } from "../API/axiosRequests";
 import { CurrencyInput } from "../Components/masks/CurrencyInput";
 
-const Outcome = () => {
+const Transactions = ({ pageType }) => {
   const navigate = useNavigate();
   const data = JSON.parse(localStorage.getItem("auth"));
   const { token } = data;
   const [form, setForm] = useState({ value: "", description: "" });
+  const headerText = {
+    income: "Entrada",
+    expenses: "Saída",
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      sendExpense(form, token);
+      sendTransaction(form, token, pageType);
       navigate("/sessao");
     } catch (err) {
       console.log(err);
@@ -25,10 +30,11 @@ const Outcome = () => {
   const handleForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
   return (
     <>
       <ExpenseContainer>
-        <h1>Nova saída</h1>
+        <h1>Nova {headerText[pageType]}</h1>
         <CustomForm onSubmit={handleSubmit}>
           <CurrencyInput
             id="input-currency"
@@ -39,15 +45,15 @@ const Outcome = () => {
             name="value"
           ></CurrencyInput>
           <FormInput
+            onChange={handleForm}
             placeholder="Descrição"
             required
-            onChange={handleForm}
             name="description"
           ></FormInput>
-          <PurpleButton>Salvar saída</PurpleButton>
+          <PurpleButton>Salvar {headerText[pageType]}</PurpleButton>
         </CustomForm>
       </ExpenseContainer>
     </>
   );
 };
-export { Outcome };
+export { Transactions };

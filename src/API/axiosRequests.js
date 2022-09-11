@@ -14,17 +14,12 @@ const getOperations = (token) => {
   });
 };
 
-const sendIncome = (data, token) => {
-  return axiosBase.post("/income", data, {
+const sendTransaction = (data, token, operation) => {
+  return axiosBase.post(`/${operation}`, data, {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
 
-const sendExpense = (data, token) => {
-  return axiosBase.post("/outcome", data, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-};
 const deleteSession = (token) => {
   return axiosBase.delete("/sign-in", {
     headers: { Authorization: `Bearer ${token}` },
@@ -41,8 +36,7 @@ export {
   userSignUp,
   userSignIn,
   getOperations,
-  sendIncome,
-  sendExpense,
+  sendTransaction,
   deleteSession,
   deleteOperation,
 };
