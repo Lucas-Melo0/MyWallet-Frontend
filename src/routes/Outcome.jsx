@@ -7,8 +7,9 @@ import { useState } from "react";
 import { sendExpense } from "../API/axiosRequests";
 import { CurrencyInput } from "../Components/masks/CurrencyInput";
 
-const Outcome = ({ data }) => {
+const Outcome = () => {
   const navigate = useNavigate();
+  const data = JSON.parse(localStorage.getItem("auth"));
   const { token } = data;
   const [form, setForm] = useState({ value: "", description: "" });
   const handleSubmit = (e) => {

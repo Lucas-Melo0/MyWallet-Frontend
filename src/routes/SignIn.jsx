@@ -25,6 +25,10 @@ const SignIn = ({ setData, data }) => {
     e.preventDefault();
     try {
       const response = await userSignIn(userData);
+      localStorage.setItem(
+        "auth",
+        JSON.stringify({ token: response.data.token, name: response.data.name })
+      );
       setData(response.data);
       navigate("/sessao");
     } catch (err) {

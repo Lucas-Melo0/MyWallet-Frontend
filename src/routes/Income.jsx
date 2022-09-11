@@ -6,8 +6,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { sendIncome } from "../API/axiosRequests";
 import { CurrencyInput } from "../Components/masks/CurrencyInput";
-const Income = ({ data }) => {
+const Income = () => {
   const navigate = useNavigate();
+
+  const data = JSON.parse(localStorage.getItem("auth"));
   const { token } = data;
   const [form, setForm] = useState({ value: "", description: "" });
   const handleSubmit = (e) => {

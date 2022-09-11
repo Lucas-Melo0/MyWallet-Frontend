@@ -14,17 +14,19 @@ import { useEffect, useState } from "react";
 import { IoExitOutline } from "react-icons/io5";
 import { BiPlusCircle } from "react-icons/bi";
 import { BiMinusCircle } from "react-icons/bi";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   deleteSession,
   getOperations,
   deleteOperation,
 } from "../API/axiosRequests";
 
-const Wallet = ({ data }) => {
+const Wallet = () => {
   const [operations, setOperations] = useState([]);
   const [render, setRender] = useState(false);
+  const data = JSON.parse(localStorage.getItem("auth"));
   const { token, name } = data;
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -109,6 +111,7 @@ const Wallet = ({ data }) => {
         <SquareContainer>
           <EntrySquare onClick={() => navigate("/sessao/entrada")}>
             <BiPlusCircle color="#FFFFFF" size={"28px"} />
+
             <p> Nova Entrada</p>
           </EntrySquare>
           <EntrySquare onClick={() => navigate("/sessao/saida")}>

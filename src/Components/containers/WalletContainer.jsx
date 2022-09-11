@@ -110,6 +110,7 @@ const EntrySquare = styled.div`
   width: 46%;
   height: 20vh;
   background: #a328d6;
+  cursor: pointer;
   border-radius: 5px;
   p {
     width: 80px;
