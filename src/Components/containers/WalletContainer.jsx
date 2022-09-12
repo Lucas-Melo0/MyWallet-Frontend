@@ -31,7 +31,9 @@ const WalletOperations = styled.div`
   background-color: #ffffff;
   border-radius: 5px;
   width: 100%;
+  overflow-y: auto;
   height: 66vh;
+  max-height: 66vh;
   h6 {
     font-family: "Raleway", sans-serif;
     font-size: 20px;
