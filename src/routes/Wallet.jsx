@@ -59,6 +59,7 @@ const Wallet = ({ setPageType }) => {
   const logoutUser = async () => {
     try {
       await deleteSession(token);
+      localStorage.removeItem("auth");
       navigate("/");
     } catch (err) {
       console.log(err);
