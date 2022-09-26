@@ -23,14 +23,13 @@ import {
 
 const Wallet = ({ setPageType }) => {
   const [operations, setOperations] = useState([]);
-  const [render, setRender] = useState(false);
   const data = JSON.parse(localStorage.getItem("auth"));
   const { token, name } = data;
   const navigate = useNavigate();
 
   useEffect(() => {
     getOperations(token).then((value) => setOperations(value.data));
-  }, [render]);
+  }, []);
 
   const calculateResult = () => {
     let sum = 0;
@@ -71,7 +70,7 @@ const Wallet = ({ setPageType }) => {
     if (wantsToDelete) {
       try {
         await deleteOperation(id, token);
-        setRender(!render);
+        setOperations(operations.filter((operation) => operation._id !== id));
       } catch (err) {
         console.log(err);
       }
